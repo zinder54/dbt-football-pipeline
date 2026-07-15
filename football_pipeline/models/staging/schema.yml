@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: raw
+    tables:
+      - name: matches
+
+models:
+  - name: stg_matches
+    columns:
+      - name: match_id
+        tests:
+          - unique
+          - not_null
+      - name: status
+        tests:
+          - not_null
