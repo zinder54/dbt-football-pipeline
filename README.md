@@ -11,10 +11,11 @@ End-to-end ELT pipeline using Python, dbt and DuckDB — ingesting Premier Leagu
 - **football-data.org API** — source of Premier League match and game data
 
 ## Architecture
-![Lineage Graph](docs/lineage.png)
+![Lineage Graph](docs/Lineage.png)
 
 ## Project Structure
-'''
+
+```
 dbt-football-pipeline/
 ├── scripts/
 │   └── ingest.py        # Extracts and loads raw API data into DuckDB
@@ -29,7 +30,7 @@ dbt-football-pipeline/
 ├── data/                # DuckDB database files (gitignored)
 ├── .env                 # API key (gitignored)
 └── README.md
-'''
+```
 
 ## How to Run
 
