@@ -15,3 +15,15 @@ models:
       - name: status
         tests:
           - not_null
+  - name: dim_teams
+    columns:
+      - name: team_id
+        tests:
+          - unique
+          - not_null
+      - name: team_name
+        tests:
+          - not_null
+      - name: team_shortname
+        tests:
+          - not_null
