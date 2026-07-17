@@ -27,3 +27,9 @@ models:
       - name: team_shortname
         tests:
           - not_null
+  - name: fct_team_stats
+    columns:
+      - name: team_id
+        tests:
+          - unique
+          - not_null

@@ -2,7 +2,7 @@
 End-to-end ELT pipeline using Python, dbt and DuckDB — ingesting Premier League data from the football-data.org API and transforming it through staging and mart layers.
 
 ## Description
-`ingest.py` pulls Premier League match data from the football-data.org API, normalises the nested JSON response and loads it into a local DuckDB database. dbt then transforms the raw data through two layers — a staging model that selects, renames and casts the relevant columns, and a mart model that adds calculated metrics useful for analysis such as goal difference, total goals and second half goals. The final output is a fully tested DuckDB table containing match data for every Premier League game, ready for analysis or visualisation.
+`ingest.py` pulls Premier League match data from the football-data.org API, normalises the nested JSON response and loads it into a local DuckDB database. dbt then transforms the raw data through two layers — a staging model that selects, renames and casts the relevant columns, and three mart models: fct_matches (match-level metrics), dim_teams (team reference data) and fct_team_stats (aggregated season stats per team). The final output is a fully tested DuckDB table containing match data for every Premier League game, ready for analysis or visualisation.
 
 ## Tech Stack
 - **Python** — extracts data from the API, normalises the JSON output and loads it into DuckDB
@@ -11,7 +11,7 @@ End-to-end ELT pipeline using Python, dbt and DuckDB — ingesting Premier Leagu
 - **football-data.org API** — source of Premier League match and game data
 
 ## Architecture
-![Lineage Graph](docs/Lineage.png)
+![Lineage Graph](docs/lineage.png)
 
 ## Project Structure
 
@@ -26,6 +26,8 @@ dbt-football-pipeline/
 │   │   │   └── schema.yml
 │   │   └── marts/
 │   │       └── fct_matches.sql
+│   │       └── dim_teams.sql
+│   │       └── fct_team_stats.sql
 │   └── dbt_project.yml
 ├── data/                # DuckDB database files (gitignored)
 ├── .env                 # API key (gitignored)
